@@ -22,7 +22,7 @@ const CareerAspirationWorkbook = () => {
   const [answers, setAnswers] = useState({});
 
   const handleLogin = () => {
-    if (password === 'career2025') {
+    if (password === 'CeIp2025@') {
       setIsAuthenticated(true);
       setShowError(false);
     } else {
