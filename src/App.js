@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable */
+ function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Check, Download, HelpCircle, Eye, Edit3 } from 'lucide-react';
 
 const CareerAspirationWorkbook = () => {
@@ -13,7 +14,7 @@ const CareerAspirationWorkbook = () => {
 
   const [basicInfo, setBasicInfo] = useState({
     industry: '',
-    job: '',
+    position: '',
     company: ''
   });
 
@@ -642,7 +643,7 @@ ${finalText.split('\n\n').map(para => `<p>${para.replace(/\n/g, '<br>')}</p>`).j
   };
 
   const getRawAnswersText = () => {
-    return `📋 원본 답변 모음\n\n[기본 정보]\n산업: ${basicInfo.industry || '-'}\n직무: ${basicInfo.job || '-'}\n회사: ${basicInfo.company || '-'}\n\n[Q1: 직무 핵심 이해]\nQ1-1 핵심 업무·본질: ${answers.q1_1_1 || '-'}\nQ1-2 성과자 역량: ${answers.q1_1_2 || '-'}\nQ1-3 연계 팀·역할: ${answers.q1_1_3 || '-'}\n\n[Q2: 현재 역량 진단]\nQ2-1 보유 역량: ${answers.q1_2_1 || '-'}\nQ2-2 부족한 역량: ${answers.q1_2_2 || '-'}\nQ2-3 이미 시작한 노력: ${answers.q1_2_3 || '-'}\n\n[Q3: 역량 확보 및 범위 확장 계획]\nQ3-1 역량별 확보 방법+시기: ${answers.q1_3_1 || '-'}\nQ3-2 업무 범위 확장: ${answers.q1_3_2 || '-'}\nQ3-3 측정 기준+1년 후 수준: ${answers.q1_3_3 || '-'}\n\n[Q4: 다음 단계와 큰 그림]\nQ4-1 다음 역할+준비 경로: ${answers.q1_q4_1 || '-'}\nQ4-2 조직 기여+회사 방향 연결: ${answers.q1_q4_2 || '-'}\n\n[3라운드 연결 질문]\n연결Q1 (직무핵심+현재): ${answers.connect_q1 || '-'}\n연결Q2 (역량갭→확보→확장): ${answers.connect_q2 || '-'}\n연결Q3 (단기→중기다음단계): ${answers.connect_q3 || '-'}\n연결Q4 (개인성장→조직기여): ${answers.connect_q4 || '-'}`;
+    return `📋 원본 답변 모음\n\n[기본 정보]\n산업: ${basicInfo.industry || '-'}\n직무: ${basicInfo.position || '-'}\n회사: ${basicInfo.company || '-'}\n\n[Q1: 직무 핵심 이해]\nQ1-1 핵심 업무·본질: ${answers.q1_1_1 || '-'}\nQ1-2 성과자 역량: ${answers.q1_1_2 || '-'}\nQ1-3 연계 팀·역할: ${answers.q1_1_3 || '-'}\n\n[Q2: 현재 역량 진단]\nQ2-1 보유 역량: ${answers.q1_2_1 || '-'}\nQ2-2 부족한 역량: ${answers.q1_2_2 || '-'}\nQ2-3 이미 시작한 노력: ${answers.q1_2_3 || '-'}\n\n[Q3: 역량 확보 및 범위 확장 계획]\nQ3-1 역량별 확보 방법+시기: ${answers.q1_3_1 || '-'}\nQ3-2 업무 범위 확장: ${answers.q1_3_2 || '-'}\nQ3-3 측정 기준+1년 후 수준: ${answers.q1_3_3 || '-'}\n\n[Q4: 다음 단계와 큰 그림]\nQ4-1 다음 역할+준비 경로: ${answers.q1_q4_1 || '-'}\nQ4-2 조직 기여+회사 방향 연결: ${answers.q1_q4_2 || '-'}\n\n[3라운드 연결 질문]\n연결Q1 (직무핵심+현재): ${answers.connect_q1 || '-'}\n연결Q2 (역량갭→확보→확장): ${answers.connect_q2 || '-'}\n연결Q3 (단기→중기다음단계): ${answers.connect_q3 || '-'}\n연결Q4 (개인성장→조직기여): ${answers.connect_q4 || '-'}`;
   };
 
   const canGoNext = () => {
@@ -650,7 +651,7 @@ ${finalText.split('\n\n').map(para => `<p>${para.replace(/\n/g, '<br>')}</p>`).j
       return selectedSteps.length >= 1;
     }
     if (currentStep === 0 && currentPhase === 'round1') {
-      return basicInfo.industry && basicInfo.job && basicInfo.company;
+      return basicInfo.industry && basicInfo.position && basicInfo.company;
     }
     return true;
   };
@@ -663,416 +664,416 @@ ${finalText.split('\n\n').map(para => `<p>${para.replace(/\n/g, '<br>')}</p>`).j
 
   if (showIntro) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-lg shadow-2xl p-8">
-            <h1 className="text-4xl font-bold text-gray-800 mb-4 text-center">
-              질문에 답하며 완성하는<br />입사후포부 워크북
-            </h1>
-            <p className="text-center text-gray-600 mb-8">CareerEngineer의 3라운드 체계적 작성 시스템</p>
+      React.createElement('div', { className: "min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8"    ,}
+        , React.createElement('div', { className: "max-w-4xl mx-auto" ,}
+          , React.createElement('div', { className: "bg-white rounded-lg shadow-2xl p-8"   ,}
+            , React.createElement('h1', { className: "text-4xl font-bold text-gray-800 mb-4 text-center"    ,}, "질문에 답하며 완성하는"
+                , React.createElement('br', null ), "입사후포부 워크북"
+            )
+            , React.createElement('p', { className: "text-center text-gray-600 mb-8"  ,}, "CareerEngineer의 3라운드 체계적 작성 시스템"    )
 
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 mb-8">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">3라운드 작성 시스템</h2>
-              <div className="space-y-4">
-                <div className="bg-white rounded-lg p-4 border-l-4 border-blue-500">
-                  <h3 className="font-bold text-gray-800 mb-2">1라운드: 기본 입사후포부 수립</h3>
-                  <p className="text-sm text-gray-700">4개 Q 핵심 질문에 답변 — 직무 핵심 이해 · 역량 진단 · 확보 계획+범위 확장 · 다음 단계+큰 그림</p>
-                </div>
-                <div className="bg-white rounded-lg p-4 border-l-4 border-indigo-500">
-                  <h3 className="font-bold text-gray-800 mb-2">2라운드: 약한 부분 보강</h3>
-                  <p className="text-sm text-gray-700">부족한 Q 선택 → 심화 질문으로 구체화 (JD 키워드 연결·역량 증명·확장 시나리오)</p>
-                </div>
-                <div className="bg-white rounded-lg p-4 border-l-4 border-purple-500">
-                  <h3 className="font-bold text-gray-800 mb-2">3라운드: 연결 및 완성</h3>
-                  <p className="text-sm text-gray-700">4개 연결 질문(직무핵심+현재 / 역량확보+범위확장 / 다음단계 / 큰그림+회사기여)으로 하나의 인과 흐름으로 완성</p>
-                </div>
-              </div>
-            </div>
+            , React.createElement('div', { className: "bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 mb-8"     ,}
+              , React.createElement('h2', { className: "text-2xl font-bold text-gray-800 mb-4"   ,}, "3라운드 작성 시스템"  )
+              , React.createElement('div', { className: "space-y-4",}
+                , React.createElement('div', { className: "bg-white rounded-lg p-4 border-l-4 border-blue-500"    ,}
+                  , React.createElement('h3', { className: "font-bold text-gray-800 mb-2"  ,}, "1라운드: 기본 입사후포부 수립"   )
+                  , React.createElement('p', { className: "text-sm text-gray-700" ,}, "4개 Q 핵심 질문에 답변 — 직무 핵심 이해 · 역량 진단 · 확보 계획+범위 확장 · 다음 단계+큰 그림"                   )
+                )
+                , React.createElement('div', { className: "bg-white rounded-lg p-4 border-l-4 border-indigo-500"    ,}
+                  , React.createElement('h3', { className: "font-bold text-gray-800 mb-2"  ,}, "2라운드: 약한 부분 보강"   )
+                  , React.createElement('p', { className: "text-sm text-gray-700" ,}, "부족한 Q 선택 → 심화 질문으로 구체화 (JD 키워드 연결·역량 증명·확장 시나리오)"           )
+                )
+                , React.createElement('div', { className: "bg-white rounded-lg p-4 border-l-4 border-purple-500"    ,}
+                  , React.createElement('h3', { className: "font-bold text-gray-800 mb-2"  ,}, "3라운드: 연결 및 완성"   )
+                  , React.createElement('p', { className: "text-sm text-gray-700" ,}, "4개 연결 질문(직무핵심+현재 / 역량확보+범위확장 / 다음단계 / 큰그림+회사기여)으로 하나의 인과 흐름으로 완성"            )
+                )
+              )
+            )
 
-            <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-8">
-              <h3 className="font-bold text-gray-800 mb-3">핵심 원칙</h3>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li><strong>JD 직결:</strong> 직무 공고 키워드를 직접 인용한 내용만</li>
-                <li><strong>구체성:</strong> 역량마다 방법·시기·측정기준 세트로 표현</li>
-                <li><strong>검증 가능성:</strong> 증거가 있는 역량만, 막연한 선언 금지</li>
-                <li><strong>연결성:</strong> 직무 이해 → 역량 진단 → 확보 계획 → 범위 확장 → 다음 단계 → 큰 그림이 하나의 인과 흐름으로 이어져야 합니다</li>
-              </ul>
-              <div className="mt-4 pt-4 border-t border-yellow-300">
-                <p className="text-sm font-semibold text-gray-800 mb-2">💡 직무를 많이 알수록 더 잘 쓸 수 있습니다</p>
-                <p className="text-sm text-gray-700">
-                  JD를 여러 번 읽고, 시니어 채용공고를 검색하고, 현직자 인터뷰를 찾아볼수록 각 질문의 답변이 구체적이 됩니다. 막힌다면 리서치가 부족하다는 신호입니다.
-                </p>
-              </div>
-            </div>
+            , React.createElement('div', { className: "bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-8"    ,}
+              , React.createElement('h3', { className: "font-bold text-gray-800 mb-3"  ,}, "핵심 원칙" )
+              , React.createElement('ul', { className: "space-y-2 text-sm text-gray-700"  ,}
+                , React.createElement('li', null, React.createElement('strong', null, "JD 직결:" ), " 직무 공고 키워드를 직접 인용한 내용만"      )
+                , React.createElement('li', null, React.createElement('strong', null, "구체성:"), " 역량마다 방법·시기·측정기준 세트로 표현"    )
+                , React.createElement('li', null, React.createElement('strong', null, "검증 가능성:" ), " 증거가 있는 역량만, 막연한 선언 금지"      )
+                , React.createElement('li', null, React.createElement('strong', null, "연결성:"), " 직무 이해 → 역량 진단 → 확보 계획 → 범위 확장 → 다음 단계 → 큰 그림이 하나의 인과 흐름으로 이어져야 합니다"                      )
+              )
+              , React.createElement('div', { className: "mt-4 pt-4 border-t border-yellow-300"   ,}
+                , React.createElement('p', { className: "text-sm font-semibold text-gray-800 mb-2"   ,}, "💡 직무를 많이 알수록 더 잘 쓸 수 있습니다"        )
+                , React.createElement('p', { className: "text-sm text-gray-700" ,}, "JD를 여러 번 읽고, 시니어 채용공고를 검색하고, 현직자 인터뷰를 찾아볼수록 각 질문의 답변이 구체적이 됩니다. 막힌다면 리서치가 부족하다는 신호입니다."
 
-            <div className="bg-red-50 border-2 border-red-300 rounded-lg p-6 mb-8">
-              <h3 className="font-bold text-red-800 mb-2">⚠️ 반드시 확인</h3>
-              <p className="text-sm text-red-700">
-                작성하는 내용은 자동으로 저장되지 않으며 새로고침 버튼을 누르면 그동안 작성했던 내용은 사라집니다. 내용 작성 후 마지막 페이지에서 반드시 워드 파일(.doc)로 다운로드 하여 작성한 내용을 보관하세요
-              </p>
-            </div>
+                )
+              )
+            )
 
-            <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
-              <div className="mt-4 pt-4 border-t border-gray-200">
-                <p className="text-xs text-gray-800 text-center">
-                  © 2026 CareerEngineer All Rights Reserved.
-                </p>
-                <p className="text-xs text-red-800 text-center mt-1 font-semibold">
-                  이 워크북은 저작권법에 의해 보호받는 저작물입니다. 워크북의 전체 또는 일부를 저작권자의 사전 서면 동의 없이 무단으로 복제, 배포, 전송, 전시, 방송하거나 수정 및 편집하는 행위는 금지되어 있으며, 위반 시 관련 법령에 따라 법적인 책임을 질 수 있습니다. 오직 개인적인 용도로만 사용해야 하며, 상업적 목적의 사용 및 무단 배포를 엄격히 금지합니다.
-                </p>
-              </div>
-            </div>
+            , React.createElement('div', { className: "bg-red-50 border-2 border-red-300 rounded-lg p-6 mb-8"     ,}
+              , React.createElement('h3', { className: "font-bold text-red-800 mb-2"  ,}, "⚠️ 반드시 확인"  )
+              , React.createElement('p', { className: "text-sm text-red-700" ,}, "작성하는 내용은 자동으로 저장되지 않으며 새로고침 버튼을 누르면 그동안 작성했던 내용은 사라집니다. 내용 작성 후 마지막 페이지에서 반드시 워드 파일(.doc)로 다운로드 하여 작성한 내용을 보관하세요"
 
-            <button
-              onClick={() => setShowIntro(false)}
-              className="w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-colors font-bold text-lg"
-            >
-              1라운드 시작하기 →
-            </button>
-          </div>
-        </div>
-      </div>
+              )
+            )
+
+            , React.createElement('div', { className: "bg-white rounded-lg shadow-lg p-6 mb-8"    ,}
+              , React.createElement('div', { className: "mt-4 pt-4 border-t border-gray-200"   ,}
+                , React.createElement('p', { className: "text-xs text-gray-800 text-center"  ,}, "© 2026 CareerEngineer All Rights Reserved."
+
+                )
+                , React.createElement('p', { className: "text-xs text-red-800 text-center mt-1 font-semibold"    ,}, "이 워크북은 저작권법에 의해 보호받는 저작물입니다. 워크북의 전체 또는 일부를 저작권자의 사전 서면 동의 없이 무단으로 복제, 배포, 전송, 전시, 방송하거나 수정 및 편집하는 행위는 금지되어 있으며, 위반 시 관련 법령에 따라 법적인 책임을 질 수 있습니다. 오직 개인적인 용도로만 사용해야 하며, 상업적 목적의 사용 및 무단 배포를 엄격히 금지합니다."
+
+                )
+              )
+            )
+
+            , React.createElement('button', {
+              onClick: () => setShowIntro(false),
+              className: "w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-colors font-bold text-lg"           ,}
+, "1라운드 시작하기 →"
+
+            )
+          )
+        )
+      )
     );
   }
 
   if (currentPhase === 'evaluation') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4 text-center">
-              1라운드 완료! 🎉
-            </h2>
-            <p className="text-center text-gray-600 mb-4">
-              답변이 얕거나 더 구체화가 필요한 질문을 선택하여 2라운드에서 심화 질문에 답변하세요
-            </p>
-            <div className="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 text-sm text-amber-900 rounded">
-              <p className="font-semibold mb-1">💡 선택 기준</p>
-              <p>답변을 다시 읽었을 때 면접관이 <strong>"더 구체적으로 말해줄 수 있어요?"</strong>라고 물을 것 같은 Q를 선택하세요.</p>
-              <p className="mt-1 text-amber-700">특히 JD 키워드 연결이 부족하거나, 역량 확보 계획에 방법·시기·측정기준이 없는 Q를 우선 선택하세요.</p>
-            </div>
+      React.createElement('div', { className: "min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4"    ,}
+        , React.createElement('div', { className: "max-w-4xl mx-auto" ,}
+          , React.createElement('div', { className: "bg-white rounded-lg shadow-lg p-8"   ,}
+            , React.createElement('h2', { className: "text-3xl font-bold text-gray-800 mb-4 text-center"    ,}, "1라운드 완료! 🎉"
 
-            <div className="space-y-4 mb-8">
-              {round1Steps.slice(1).map(step => {
+            )
+            , React.createElement('p', { className: "text-center text-gray-600 mb-4"  ,}, "답변이 얕거나 더 구체화가 필요한 질문을 선택하여 2라운드에서 심화 질문에 답변하세요"
+
+            )
+            , React.createElement('div', { className: "bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 text-sm text-amber-900 rounded"       ,}
+              , React.createElement('p', { className: "font-semibold mb-1" ,}, "💡 선택 기준"  )
+              , React.createElement('p', null, "답변을 다시 읽었을 때 면접관이 "     , React.createElement('strong', null, "\"더 구체적으로 말해줄 수 있어요?\""    ), "라고 물을 것 같은 Q를 선택하세요."     )
+              , React.createElement('p', { className: "mt-1 text-amber-700" ,}, "특히 JD 키워드 연결이 부족하거나, 역량 확보 계획에 방법·시기·측정기준이 없는 Q를 우선 선택하세요."            )
+            )
+
+            , React.createElement('div', { className: "space-y-4 mb-8" ,}
+              , round1Steps.slice(1).map(step => {
                 const stepId = step.id;
                 const isSelected = selectedSteps.includes(stepId);
 
                 return (
-                  <div
-                    key={stepId}
-                    className={`border-2 rounded-lg p-5 transition-all ${
+                  React.createElement('div', {
+                    key: stepId,
+                    className: `border-2 rounded-lg p-5 transition-all ${
                       isSelected
                         ? 'border-indigo-500 bg-indigo-50'
                         : 'border-gray-200 bg-white hover:border-indigo-300'
-                    }`}
-                  >
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <h3 className="font-bold text-gray-800 mb-1">{step.title}</h3>
-                        <p className="text-sm text-gray-600 mb-2">{step.subtitle}</p>
-                        <div className="bg-gray-50 rounded p-3 text-sm text-gray-700">
-                          <strong>내 답변:</strong> {answers[step.questions[0].id]?.substring(0, 100) || '(답변 없음)'}
-                          {answers[step.questions[0].id]?.length > 100 && '...'}
-                        </div>
-                      </div>
-                      <button
-                        onClick={() => toggleStepSelection(stepId)}
-                        className={`ml-4 px-4 py-2 rounded-lg font-semibold transition-colors ${
+                    }`,}
+
+                    , React.createElement('div', { className: "flex items-start justify-between"  ,}
+                      , React.createElement('div', { className: "flex-1",}
+                        , React.createElement('h3', { className: "font-bold text-gray-800 mb-1"  ,}, step.title)
+                        , React.createElement('p', { className: "text-sm text-gray-600 mb-2"  ,}, step.subtitle)
+                        , React.createElement('div', { className: "bg-gray-50 rounded p-3 text-sm text-gray-700"    ,}
+                          , React.createElement('strong', null, "내 답변:" ), " " , _optionalChain([answers, 'access', _ => _[step.questions[0].id], 'optionalAccess', _2 => _2.substring, 'call', _3 => _3(0, 100)]) || '(답변 없음)'
+                          , _optionalChain([answers, 'access', _4 => _4[step.questions[0].id], 'optionalAccess', _5 => _5.length]) > 100 && '...'
+                        )
+                      )
+                      , React.createElement('button', {
+                        onClick: () => toggleStepSelection(stepId),
+                        className: `ml-4 px-4 py-2 rounded-lg font-semibold transition-colors ${
                           isSelected
                             ? 'bg-indigo-600 text-white'
                             : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                        }`}
-                      >
-                        {isSelected ? '✓ 선택됨' : '심화 선택'}
-                      </button>
-                    </div>
-                  </div>
+                        }`,}
+
+                        , isSelected ? '✓ 선택됨' : '심화 선택'
+                      )
+                    )
+                  )
                 );
-              })}
-            </div>
+              })
+            )
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
-              <p className="text-sm text-blue-800">
-                <strong>💡 선택 기준:</strong> 답변이 부족하거나 더 구체화가 필요한 Q를 자유롭게 선택하세요. (1개 이상)
-              </p>
-            </div>
+            , React.createElement('div', { className: "bg-blue-50 border-l-4 border-blue-400 p-4 mb-6"    ,}
+              , React.createElement('p', { className: "text-sm text-blue-800" ,}
+                , React.createElement('strong', null, "💡 선택 기준:"  ), " 답변이 부족하거나 더 구체화가 필요한 Q를 자유롭게 선택하세요. (1개 이상)"
+              )
+            )
 
-            <div className="flex gap-4">
-              <button
-                onClick={goToPrevStep}
-                className="flex items-center gap-2 px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 font-medium"
-              >
-                <ChevronLeft className="w-5 h-5" />
-                이전
-              </button>
-              <button
-                onClick={goToNextStep}
-                disabled={!canGoNext()}
-                className="flex-1 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed font-semibold text-lg"
-              >
-                2라운드 시작하기 ({selectedSteps.length}개 선택됨)
-              </button>
-            </div>
-          </div>
+            , React.createElement('div', { className: "flex gap-4" ,}
+              , React.createElement('button', {
+                onClick: goToPrevStep,
+                className: "flex items-center gap-2 px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 font-medium"         ,}
 
-          <div className="text-center mt-6">
-            <p className="text-xs text-gray-500">
-              © 2026 CareerEngineer All Rights Reserved.
-            </p>
-          </div>
-        </div>
-      </div>
+                , React.createElement(ChevronLeft, { className: "w-5 h-5" ,} ), "이전"
+
+              )
+              , React.createElement('button', {
+                onClick: goToNextStep,
+                disabled: !canGoNext(),
+                className: "flex-1 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed font-semibold text-lg"         ,}
+, "2라운드 시작하기 ("
+                  , selectedSteps.length, "개 선택됨)"
+              )
+            )
+          )
+
+          , React.createElement('div', { className: "text-center mt-6" ,}
+            , React.createElement('p', { className: "text-xs text-gray-500" ,}, "© 2026 CareerEngineer All Rights Reserved."
+
+            )
+          )
+        )
+      )
     );
   }
 
   if (currentPhase === 'completed') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-4">
-                <Check className="w-10 h-10 text-green-600" />
-              </div>
-              <h2 className="text-3xl font-bold text-gray-800 mb-2">
-                입사후포부 완성! 🎉
-              </h2>
-              <p className="text-gray-600">
-                아래 내용을 확인하고 자유롭게 수정하세요
-              </p>
-            </div>
+      React.createElement('div', { className: "min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4"    ,}
+        , React.createElement('div', { className: "max-w-4xl mx-auto" ,}
+          , React.createElement('div', { className: "bg-white rounded-lg shadow-lg p-8"   ,}
+            , React.createElement('div', { className: "text-center mb-8" ,}
+              , React.createElement('div', { className: "inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-4"       ,}
+                , React.createElement(Check, { className: "w-10 h-10 text-green-600"  ,} )
+              )
+              , React.createElement('h2', { className: "text-3xl font-bold text-gray-800 mb-2"   ,}, "입사후포부 완성! 🎉"
 
-            <div className="bg-red-100 border-2 border-red-500 rounded-lg p-5 mb-6">
-              <div className="flex items-start gap-3">
-                <span className="text-3xl">⚠️</span>
-                <div>
-                  <p className="text-base font-bold text-red-900 mb-2">
-                    반드시 다운로드하세요!
-                  </p>
-                  <p className="text-sm text-red-800 leading-relaxed">
-                    지금까지 작성한 모든 내용은 브라우저에만 임시 저장되어 있습니다.
-                    페이지를 새로고침하거나 닫으면 <strong>모든 내용이 즉시 삭제</strong>됩니다.
-                    <br />
-                    <strong>내용 수정 후 "워드 파일로 다운로드"</strong> 버튼을 눌러 .doc 파일로 저장하세요!
-                  </p>
-                </div>
-              </div>
-            </div>
+              )
+              , React.createElement('p', { className: "text-gray-600",}, "아래 내용을 확인하고 자유롭게 수정하세요"
 
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-lg p-5 mb-6">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-lg font-bold text-gray-800 flex items-center gap-2">
-                  <Edit3 className="w-5 h-5 text-blue-600" />
-                  완성된 입사후포부 (수정 가능)
-                </h3>
-                <button
-                  onClick={() => setShowRawAnswers(!showRawAnswers)}
-                  className="text-sm text-gray-600 hover:text-gray-800 flex items-center gap-1"
-                >
-                  <Eye className="w-4 h-4" />
-                  {showRawAnswers ? '원본 답변 숨기기' : '원본 답변 보기'}
-                </button>
-              </div>
+              )
+            )
 
-              {/* 첫 문장 가이드 */}
-              <div className="bg-amber-50 border-l-4 border-amber-400 p-4 mb-4 rounded">
-                <p className="text-sm font-bold text-amber-900 mb-2">💡 첫 문장 — 전체 주제문</p>
-                <p className="text-sm text-amber-800 mb-1">구조: <strong>[직무 핵심 정의]</strong>로 시작 → <strong>[나의 현재 위치]</strong> 솔직하게 → <strong>[갭 인식]</strong> 명확히 → <strong>[준비 의지]</strong> 자연스럽게</p>
-                <p className="text-xs text-amber-700 mt-2 border-t border-amber-200 pt-2">⚠️ 피해야 할 표현: "저는 ~한 사람입니다"로 시작 / "열심히 배우겠습니다"로 끝 / JD 키워드가 하나도 없는 일반론</p>
-              </div>
+            , React.createElement('div', { className: "bg-red-100 border-2 border-red-500 rounded-lg p-5 mb-6"     ,}
+              , React.createElement('div', { className: "flex items-start gap-3"  ,}
+                , React.createElement('span', { className: "text-3xl",}, "⚠️")
+                , React.createElement('div', null
+                  , React.createElement('p', { className: "text-base font-bold text-red-900 mb-2"   ,}, "반드시 다운로드하세요!"
 
-              {/* 전체 흐름 가이드 + 실제 답변 참조 */}
-              <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
-                <p className="text-sm font-bold text-purple-900 mb-3">📋 내 답변 활용 가이드 — 각 단락의 재료와 연결 방법</p>
-                <p className="text-xs text-purple-700 mb-4">아래 답변들을 참고하여 위 텍스트를 수정하세요. 모든 답변을 쓸 필요는 없습니다. 각 단락에서 가장 구체적이고 선명한 것 하나씩 골라 연결하세요.</p>
+                  )
+                  , React.createElement('p', { className: "text-sm text-red-800 leading-relaxed"  ,}, "지금까지 작성한 모든 내용은 브라우저에만 임시 저장되어 있습니다. 페이지를 새로고침하거나 닫으면 "
 
-                {/* Q1 */}
-                <div className="bg-white border-l-4 border-purple-500 rounded p-3 mb-3">
-                  <p className="text-xs font-bold text-purple-700 mb-2">Q1 — 직무 핵심 + 나의 현재 (오프닝 단락)</p>
-                  <p className="text-xs text-gray-500 mb-1">👉 3라운드 연결Q1이 있으면 우선 사용. 없으면 아래에서 선택</p>
-                  {answers.connect_q1 && (
-                    <div className="bg-purple-50 rounded p-2 mb-2">
-                      <p className="text-xs text-purple-600 font-semibold">✅ 연결Q1 (권장)</p>
-                      <p className="text-xs text-gray-700 mt-1 whitespace-pre-wrap">{answers.connect_q1.substring(0, 150)}{answers.connect_q1.length > 150 ? '...' : ''}</p>
-                    </div>
-                  )}
-                  {answers.q1_1_1 && (
-                    <div className="bg-gray-50 rounded p-2 mb-1">
-                      <p className="text-xs text-gray-500 font-semibold">핵심 업무·본질 (Q1-1)</p>
-                      <p className="text-xs text-gray-700 mt-1">{answers.q1_1_1.substring(0, 100)}{answers.q1_1_1.length > 100 ? '...' : ''}</p>
-                    </div>
-                  )}
-                  {answers.q1_2_1 && (
-                    <div className="bg-gray-50 rounded p-2 mb-1">
-                      <p className="text-xs text-gray-500 font-semibold">보유 역량 (Q2-1) → 현재 위치로 연결</p>
-                      <p className="text-xs text-gray-700 mt-1">{answers.q1_2_1.substring(0, 100)}{answers.q1_2_1.length > 100 ? '...' : ''}</p>
-                    </div>
-                  )}
-                  <p className="text-xs text-purple-600 mt-2 italic">연결 문장 예시: "이 직무의 본질을 이해한 상태에서, 현재 저의 위치를 솔직하게 진단해보면..."</p>
-                </div>
+                       , React.createElement('strong', null, "모든 내용이 즉시 삭제"   ), "됩니다."
+                    , React.createElement('br', null )
+                    , React.createElement('strong', null, "내용 수정 후 \"워드 파일로 다운로드\""     ), " 버튼을 눌러 .doc 파일로 저장하세요!"
+                  )
+                )
+              )
+            )
 
-                {/* Q2 */}
-                <div className="bg-white border-l-4 border-pink-500 rounded p-3 mb-3">
-                  <p className="text-xs font-bold text-pink-700 mb-2">Q2 — 역량 갭 → 확보 계획 → 범위 확장 (준비+단기 기여 단락)</p>
-                  <p className="text-xs text-gray-500 mb-1">👉 3라운드 연결Q2가 있으면 우선 사용. 없으면 아래에서 가장 구체적인 것 선택</p>
-                  {answers.connect_q2 && (
-                    <div className="bg-pink-50 rounded p-2 mb-2">
-                      <p className="text-xs text-pink-600 font-semibold">✅ 연결Q2 (권장)</p>
-                      <p className="text-xs text-gray-700 mt-1 whitespace-pre-wrap">{answers.connect_q2.substring(0, 150)}{answers.connect_q2.length > 150 ? '...' : ''}</p>
-                    </div>
-                  )}
-                  {answers.q1_3_1 && (
-                    <div className="bg-gray-50 rounded p-2 mb-1">
-                      <p className="text-xs text-gray-500 font-semibold">역량별 확보 계획 (Q3-1)</p>
-                      <p className="text-xs text-gray-700 mt-1">{answers.q1_3_1.substring(0, 100)}{answers.q1_3_1.length > 100 ? '...' : ''}</p>
-                    </div>
-                  )}
-                  {answers.q1_3_2 && (
-                    <div className="bg-gray-50 rounded p-2 mb-1">
-                      <p className="text-xs text-gray-500 font-semibold">범위 확장 계획 (Q3-2)</p>
-                      <p className="text-xs text-gray-700 mt-1">{answers.q1_3_2.substring(0, 100)}{answers.q1_3_2.length > 100 ? '...' : ''}</p>
-                    </div>
-                  )}
-                  <p className="text-xs text-pink-600 mt-2 italic">연결 문장 예시: "부족한 ○○ 역량을 ○○ 방법으로 준비하고, 이 역량이 갖춰지면..."</p>
-                </div>
+            , React.createElement('div', { className: "bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-lg p-5 mb-6"       ,}
+              , React.createElement('div', { className: "flex items-center justify-between mb-3"   ,}
+                , React.createElement('h3', { className: "text-lg font-bold text-gray-800 flex items-center gap-2"     ,}
+                  , React.createElement(Edit3, { className: "w-5 h-5 text-blue-600"  ,} ), "완성된 입사후포부 (수정 가능)"
 
-                {/* Q3 */}
-                <div className="bg-white border-l-4 border-purple-500 rounded p-3 mb-3">
-                  <p className="text-xs font-bold text-purple-700 mb-2">Q3 — 단기 성과 → 중기 다음 단계 (성장 단락)</p>
-                  <p className="text-xs text-gray-500 mb-1">👉 3라운드 연결Q3가 있으면 우선 사용. 없으면 Q4-1 답변을 활용</p>
-                  {answers.connect_q3 && (
-                    <div className="bg-purple-50 rounded p-2 mb-2">
-                      <p className="text-xs text-purple-600 font-semibold">✅ 연결Q3 (권장)</p>
-                      <p className="text-xs text-gray-700 mt-1 whitespace-pre-wrap">{answers.connect_q3.substring(0, 150)}{answers.connect_q3.length > 150 ? '...' : ''}</p>
-                    </div>
-                  )}
-                  {answers.q1_q4_1 && (
-                    <div className="bg-gray-50 rounded p-2 mb-1">
-                      <p className="text-xs text-gray-500 font-semibold">다음 역할+준비 경로 (Q4-1)</p>
-                      <p className="text-xs text-gray-700 mt-1">{answers.q1_q4_1.substring(0, 100)}{answers.q1_q4_1.length > 100 ? '...' : ''}</p>
-                    </div>
-                  )}
-                  <p className="text-xs text-purple-600 mt-2 italic">연결 문장 예시: "단기에 쌓은 경험이 쌓이면, 이러한 다음 단계로 나아갈 수 있습니다..."</p>
-                </div>
+                )
+                , React.createElement('button', {
+                  onClick: () => setShowRawAnswers(!showRawAnswers),
+                  className: "text-sm text-gray-600 hover:text-gray-800 flex items-center gap-1"     ,}
 
-                {/* Q4 */}
-                <div className="bg-white border-l-4 border-pink-500 rounded p-3 mb-2">
-                  <p className="text-xs font-bold text-pink-700 mb-2">Q4 — 개인 성장 → 조직 기여 큰 그림 (클로징 단락, "열심히 하겠다"가 아닌 인과의 결론)</p>
-                  <p className="text-xs text-gray-500 mb-1">👉 3라운드 연결Q4가 있으면 우선 사용. 회사 방향성과 연결된 내용이어야 합니다</p>
-                  {answers.connect_q4 && (
-                    <div className="bg-pink-50 rounded p-2 mb-2">
-                      <p className="text-xs text-pink-600 font-semibold">✅ 연결Q4 (권장)</p>
-                      <p className="text-xs text-gray-700 mt-1 whitespace-pre-wrap">{answers.connect_q4.substring(0, 150)}{answers.connect_q4.length > 150 ? '...' : ''}</p>
-                    </div>
-                  )}
-                  {answers.q1_q4_2 && (
-                    <div className="bg-gray-50 rounded p-2 mb-1">
-                      <p className="text-xs text-gray-500 font-semibold">조직 기여+회사 방향 연결 (Q4-2)</p>
-                      <p className="text-xs text-gray-700 mt-1">{answers.q1_q4_2.substring(0, 100)}{answers.q1_q4_2.length > 100 ? '...' : ''}</p>
-                    </div>
-                  )}
-                  <p className="text-xs text-pink-600 mt-2 italic">연결 문장 예시: "이렇게 성장한 역량이 귀사의 [방향성]과 연결되어, 이런 방식으로 기여하겠습니다..."</p>
-                </div>
-              </div>
+                  , React.createElement(Eye, { className: "w-4 h-4" ,} )
+                  , showRawAnswers ? '원본 답변 숨기기' : '원본 답변 보기'
+                )
+              )
 
-              {/* 수정 전 최종 확인 */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-                <p className="text-sm font-bold text-blue-900 mb-3">✅ 수정 전 최종 확인 — 통과 못 하면 해당 답변으로 돌아가세요</p>
-                <div className="space-y-3">
+              /* 첫 문장 가이드 */
+              , React.createElement('div', { className: "bg-amber-50 border-l-4 border-amber-400 p-4 mb-4 rounded"     ,}
+                , React.createElement('p', { className: "text-sm font-bold text-amber-900 mb-2"   ,}, "💡 첫 문장 — 전체 주제문"     )
+                , React.createElement('p', { className: "text-sm text-amber-800 mb-1"  ,}, "구조: " , React.createElement('strong', null, "[직무 핵심 정의]"  ), "로 시작 → "   , React.createElement('strong', null, "[나의 현재 위치]"  ), " 솔직하게 → "   , React.createElement('strong', null, "[갭 인식]" ), " 명확히 → "   , React.createElement('strong', null, "[준비 의지]" ), " 자연스럽게" )
+                , React.createElement('p', { className: "text-xs text-amber-700 mt-2 border-t border-amber-200 pt-2"     ,}, "⚠️ 피해야 할 표현: \"저는 ~한 사람입니다\"로 시작 / \"열심히 배우겠습니다\"로 끝 / JD 키워드가 하나도 없는 일반론"                 )
+              )
 
-                  <div className="bg-white rounded p-3 border border-blue-100">
-                    <p className="text-xs font-semibold text-blue-800 mb-1">① 첫 문장에 JD 키워드가 직접 인용되어 있는가?</p>
-                    <p className="text-xs text-gray-500">통과 못 하면 → <span className="text-purple-600 font-semibold">Q1-1(핵심 업무·본질)</span>로 돌아가서 JD에서 단어를 가져오세요</p>
-                    {answers.q1_1_1 && <p className="text-xs text-gray-600 mt-1 bg-gray-50 rounded p-1 italic">"{answers.q1_1_1.substring(0, 60)}{answers.q1_1_1.length > 60 ? '...' : ''}" — Q1-1</p>}
-                  </div>
+              /* 전체 흐름 가이드 + 실제 답변 참조 */
+              , React.createElement('div', { className: "bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4"     ,}
+                , React.createElement('p', { className: "text-sm font-bold text-purple-900 mb-3"   ,}, "📋 내 답변 활용 가이드 — 각 단락의 재료와 연결 방법"          )
+                , React.createElement('p', { className: "text-xs text-purple-700 mb-4"  ,}, "아래 답변들을 참고하여 위 텍스트를 수정하세요. 모든 답변을 쓸 필요는 없습니다. 각 단락에서 가장 구체적이고 선명한 것 하나씩 골라 연결하세요."                   )
 
-                  <div className="bg-white rounded p-3 border border-blue-100">
-                    <p className="text-xs font-semibold text-blue-800 mb-1">② Q1(직무핵심+현재) → Q2(역량확보+범위확장) → Q3(다음단계) → Q4(큰그림)이 인과관계로 이어지는가?</p>
-                    <p className="text-xs text-gray-500">통과 못 하면 → 각 단락 사이에 연결 문장이 있는지 확인하세요. 위 내 답변 활용 가이드의 <span className="text-purple-600 font-semibold">연결 문장 예시</span>를 참고하세요</p>
-                    {answers.connect_q1 && <p className="text-xs text-gray-600 mt-1 bg-purple-50 rounded p-1 italic">Q1: "{answers.connect_q1.substring(0, 50)}{answers.connect_q1.length > 50 ? '...' : ''}" — 3라운드 연결Q1</p>}
-                    {answers.connect_q4 && <p className="text-xs text-gray-600 mt-1 bg-pink-50 rounded p-1 italic">Q4: "{answers.connect_q4.substring(0, 50)}{answers.connect_q4.length > 50 ? '...' : ''}" — 3라운드 연결Q4</p>}
-                  </div>
+                /* Q1 */
+                , React.createElement('div', { className: "bg-white border-l-4 border-purple-500 rounded p-3 mb-3"     ,}
+                  , React.createElement('p', { className: "text-xs font-bold text-purple-700 mb-2"   ,}, "Q1 — 직무 핵심 + 나의 현재 (오프닝 단락)"        )
+                  , React.createElement('p', { className: "text-xs text-gray-500 mb-1"  ,}, "👉 3라운드 연결Q1이 있으면 우선 사용. 없으면 아래에서 선택"        )
+                  , answers.connect_q1 && (
+                    React.createElement('div', { className: "bg-purple-50 rounded p-2 mb-2"   ,}
+                      , React.createElement('p', { className: "text-xs text-purple-600 font-semibold"  ,}, "✅ 연결Q1 (권장)"  )
+                      , React.createElement('p', { className: "text-xs text-gray-700 mt-1 whitespace-pre-wrap"   ,}, answers.connect_q1.substring(0, 150), answers.connect_q1.length > 150 ? '...' : '')
+                    )
+                  )
+                  , answers.q1_1_1 && (
+                    React.createElement('div', { className: "bg-gray-50 rounded p-2 mb-1"   ,}
+                      , React.createElement('p', { className: "text-xs text-gray-500 font-semibold"  ,}, "핵심 업무·본질 (Q1-1)"  )
+                      , React.createElement('p', { className: "text-xs text-gray-700 mt-1"  ,}, answers.q1_1_1.substring(0, 100), answers.q1_1_1.length > 100 ? '...' : '')
+                    )
+                  )
+                  , answers.q1_2_1 && (
+                    React.createElement('div', { className: "bg-gray-50 rounded p-2 mb-1"   ,}
+                      , React.createElement('p', { className: "text-xs text-gray-500 font-semibold"  ,}, "보유 역량 (Q2-1) → 현재 위치로 연결"      )
+                      , React.createElement('p', { className: "text-xs text-gray-700 mt-1"  ,}, answers.q1_2_1.substring(0, 100), answers.q1_2_1.length > 100 ? '...' : '')
+                    )
+                  )
+                  , React.createElement('p', { className: "text-xs text-purple-600 mt-2 italic"   ,}, "연결 문장 예시: \"이 직무의 본질을 이해한 상태에서, 현재 저의 위치를 솔직하게 진단해보면...\""            )
+                )
 
-                  <div className="bg-white rounded p-3 border border-blue-100">
-                    <p className="text-xs font-semibold text-blue-800 mb-1">③ 역량 확보 계획에 방법·시기·측정기준이 모두 있는가?</p>
-                    <p className="text-xs text-gray-500">통과 못 하면 → <span className="text-pink-600 font-semibold">Q3-1(역량별 확보 계획)</span>로 돌아가서 세 가지를 채우세요</p>
-                    {answers.q1_3_1 && <p className="text-xs text-gray-600 mt-1 bg-gray-50 rounded p-1 italic">"{answers.q1_3_1.substring(0, 60)}{answers.q1_3_1.length > 60 ? '...' : ''}" — Q3-1</p>}
-                  </div>
+                /* Q2 */
+                , React.createElement('div', { className: "bg-white border-l-4 border-pink-500 rounded p-3 mb-3"     ,}
+                  , React.createElement('p', { className: "text-xs font-bold text-pink-700 mb-2"   ,}, "Q2 — 역량 갭 → 확보 계획 → 범위 확장 (준비+단기 기여 단락)"            )
+                  , React.createElement('p', { className: "text-xs text-gray-500 mb-1"  ,}, "👉 3라운드 연결Q2가 있으면 우선 사용. 없으면 아래에서 가장 구체적인 것 선택"           )
+                  , answers.connect_q2 && (
+                    React.createElement('div', { className: "bg-pink-50 rounded p-2 mb-2"   ,}
+                      , React.createElement('p', { className: "text-xs text-pink-600 font-semibold"  ,}, "✅ 연결Q2 (권장)"  )
+                      , React.createElement('p', { className: "text-xs text-gray-700 mt-1 whitespace-pre-wrap"   ,}, answers.connect_q2.substring(0, 150), answers.connect_q2.length > 150 ? '...' : '')
+                    )
+                  )
+                  , answers.q1_3_1 && (
+                    React.createElement('div', { className: "bg-gray-50 rounded p-2 mb-1"   ,}
+                      , React.createElement('p', { className: "text-xs text-gray-500 font-semibold"  ,}, "역량별 확보 계획 (Q3-1)"   )
+                      , React.createElement('p', { className: "text-xs text-gray-700 mt-1"  ,}, answers.q1_3_1.substring(0, 100), answers.q1_3_1.length > 100 ? '...' : '')
+                    )
+                  )
+                  , answers.q1_3_2 && (
+                    React.createElement('div', { className: "bg-gray-50 rounded p-2 mb-1"   ,}
+                      , React.createElement('p', { className: "text-xs text-gray-500 font-semibold"  ,}, "범위 확장 계획 (Q3-2)"   )
+                      , React.createElement('p', { className: "text-xs text-gray-700 mt-1"  ,}, answers.q1_3_2.substring(0, 100), answers.q1_3_2.length > 100 ? '...' : '')
+                    )
+                  )
+                  , React.createElement('p', { className: "text-xs text-pink-600 mt-2 italic"   ,}, "연결 문장 예시: \"부족한 ○○ 역량을 ○○ 방법으로 준비하고, 이 역량이 갖춰지면...\""           )
+                )
 
-                  <div className="bg-white rounded p-3 border border-blue-100">
-                    <p className="text-xs font-semibold text-blue-800 mb-1">④ 마지막 문장이 "열심히 하겠습니다"가 아닌 역량+성장+기여의 인과 결론인가?</p>
-                    <p className="text-xs text-gray-500">통과 못 하면 → <span className="text-pink-600 font-semibold">3라운드 연결Q4</span>를 다시 보거나, Q4-2(조직 기여+회사 방향)를 활용하세요</p>
-                    {answers.connect_q4 && <p className="text-xs text-gray-600 mt-1 bg-pink-50 rounded p-1 italic">"{answers.connect_q4.substring(0, 60)}{answers.connect_q4.length > 60 ? '...' : ''}" — 3라운드 연결Q4</p>}
-                  </div>
+                /* Q3 */
+                , React.createElement('div', { className: "bg-white border-l-4 border-purple-500 rounded p-3 mb-3"     ,}
+                  , React.createElement('p', { className: "text-xs font-bold text-purple-700 mb-2"   ,}, "Q3 — 단기 성과 → 중기 다음 단계 (성장 단락)"         )
+                  , React.createElement('p', { className: "text-xs text-gray-500 mb-1"  ,}, "👉 3라운드 연결Q3가 있으면 우선 사용. 없으면 Q4-1 답변을 활용"         )
+                  , answers.connect_q3 && (
+                    React.createElement('div', { className: "bg-purple-50 rounded p-2 mb-2"   ,}
+                      , React.createElement('p', { className: "text-xs text-purple-600 font-semibold"  ,}, "✅ 연결Q3 (권장)"  )
+                      , React.createElement('p', { className: "text-xs text-gray-700 mt-1 whitespace-pre-wrap"   ,}, answers.connect_q3.substring(0, 150), answers.connect_q3.length > 150 ? '...' : '')
+                    )
+                  )
+                  , answers.q1_q4_1 && (
+                    React.createElement('div', { className: "bg-gray-50 rounded p-2 mb-1"   ,}
+                      , React.createElement('p', { className: "text-xs text-gray-500 font-semibold"  ,}, "다음 역할+준비 경로 (Q4-1)"   )
+                      , React.createElement('p', { className: "text-xs text-gray-700 mt-1"  ,}, answers.q1_q4_1.substring(0, 100), answers.q1_q4_1.length > 100 ? '...' : '')
+                    )
+                  )
+                  , React.createElement('p', { className: "text-xs text-purple-600 mt-2 italic"   ,}, "연결 문장 예시: \"단기에 쌓은 경험이 쌓이면, 이러한 다음 단계로 나아갈 수 있습니다...\""            )
+                )
 
-                </div>
-              </div>
+                /* Q4 */
+                , React.createElement('div', { className: "bg-white border-l-4 border-pink-500 rounded p-3 mb-2"     ,}
+                  , React.createElement('p', { className: "text-xs font-bold text-pink-700 mb-2"   ,}, "Q4 — 개인 성장 → 조직 기여 큰 그림 (클로징 단락, \"열심히 하겠다\"가 아닌 인과의 결론)"               )
+                  , React.createElement('p', { className: "text-xs text-gray-500 mb-1"  ,}, "👉 3라운드 연결Q4가 있으면 우선 사용. 회사 방향성과 연결된 내용이어야 합니다"          )
+                  , answers.connect_q4 && (
+                    React.createElement('div', { className: "bg-pink-50 rounded p-2 mb-2"   ,}
+                      , React.createElement('p', { className: "text-xs text-pink-600 font-semibold"  ,}, "✅ 연결Q4 (권장)"  )
+                      , React.createElement('p', { className: "text-xs text-gray-700 mt-1 whitespace-pre-wrap"   ,}, answers.connect_q4.substring(0, 150), answers.connect_q4.length > 150 ? '...' : '')
+                    )
+                  )
+                  , answers.q1_q4_2 && (
+                    React.createElement('div', { className: "bg-gray-50 rounded p-2 mb-1"   ,}
+                      , React.createElement('p', { className: "text-xs text-gray-500 font-semibold"  ,}, "조직 기여+회사 방향 연결 (Q4-2)"    )
+                      , React.createElement('p', { className: "text-xs text-gray-700 mt-1"  ,}, answers.q1_q4_2.substring(0, 100), answers.q1_q4_2.length > 100 ? '...' : '')
+                    )
+                  )
+                  , React.createElement('p', { className: "text-xs text-pink-600 mt-2 italic"   ,}, "연결 문장 예시: \"이렇게 성장한 역량이 귀사의 [방향성]과 연결되어, 이런 방식으로 기여하겠습니다...\""           )
+                )
+              )
 
-              <textarea
-                value={finalText}
-                onChange={(e) => setFinalText(e.target.value)}
-                rows={20}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 resize-none font-serif leading-relaxed"
-              />
-            </div>
+              /* 수정 전 최종 확인 */
+              , React.createElement('div', { className: "bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4"     ,}
+                , React.createElement('p', { className: "text-sm font-bold text-blue-900 mb-3"   ,}, "✅ 수정 전 최종 확인 — 통과 못 하면 해당 답변으로 돌아가세요"           )
+                , React.createElement('div', { className: "space-y-3",}
 
-            {showRawAnswers && (
-              <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
-                <h4 className="font-semibold text-gray-800 mb-3">📋 원본 답변 참고</h4>
-                <pre className="text-sm text-gray-700 whitespace-pre-wrap font-sans">
-                  {getRawAnswersText()}
-                </pre>
-              </div>
-            )}
+                  , React.createElement('div', { className: "bg-white rounded p-3 border border-blue-100"    ,}
+                    , React.createElement('p', { className: "text-xs font-semibold text-blue-800 mb-1"   ,}, "① 첫 문장에 JD 키워드가 직접 인용되어 있는가?"       )
+                    , React.createElement('p', { className: "text-xs text-gray-500" ,}, "통과 못 하면 → "    , React.createElement('span', { className: "text-purple-600 font-semibold" ,}, "Q1-1(핵심 업무·본질)" ), "로 돌아가서 JD에서 단어를 가져오세요"    )
+                    , answers.q1_1_1 && React.createElement('p', { className: "text-xs text-gray-600 mt-1 bg-gray-50 rounded p-1 italic"      ,}, "\"", answers.q1_1_1.substring(0, 60), answers.q1_1_1.length > 60 ? '...' : '', "\" — Q1-1"  )
+                  )
 
-            <button
-              onClick={downloadFinalText}
-              className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 font-semibold text-lg shadow-lg mb-4"
-            >
-              <Download className="w-6 h-6" />
-              워드 파일로 다운로드 (.doc)
-            </button>
+                  , React.createElement('div', { className: "bg-white rounded p-3 border border-blue-100"    ,}
+                    , React.createElement('p', { className: "text-xs font-semibold text-blue-800 mb-1"   ,}, "② Q1(직무핵심+현재) → Q2(역량확보+범위확장) → Q3(다음단계) → Q4(큰그림)이 인과관계로 이어지는가?"         )
+                    , React.createElement('p', { className: "text-xs text-gray-500" ,}, "통과 못 하면 → 각 단락 사이에 연결 문장이 있는지 확인하세요. 위 내 답변 활용 가이드의 "                , React.createElement('span', { className: "text-purple-600 font-semibold" ,}, "연결 문장 예시"  ), "를 참고하세요" )
+                    , answers.connect_q1 && React.createElement('p', { className: "text-xs text-gray-600 mt-1 bg-purple-50 rounded p-1 italic"      ,}, "Q1: \"" , answers.connect_q1.substring(0, 50), answers.connect_q1.length > 50 ? '...' : '', "\" — 3라운드 연결Q1"   )
+                    , answers.connect_q4 && React.createElement('p', { className: "text-xs text-gray-600 mt-1 bg-pink-50 rounded p-1 italic"      ,}, "Q4: \"" , answers.connect_q4.substring(0, 50), answers.connect_q4.length > 50 ? '...' : '', "\" — 3라운드 연결Q4"   )
+                  )
 
-            {downloadSuccess && (
-              <div className="bg-green-100 border-2 border-green-500 rounded-lg p-4 text-center mb-4">
-                <p className="text-green-800 font-semibold">
-                  ✅ 다운로드 완료!
-                </p>
-                <p className="text-sm text-green-700 mt-1">
-                  다운로드 폴더에서 "{basicInfo.company || '회사'}_입사후포부.doc" 파일을 Microsoft Word로 열어주세요.
-                </p>
-              </div>
-            )}
+                  , React.createElement('div', { className: "bg-white rounded p-3 border border-blue-100"    ,}
+                    , React.createElement('p', { className: "text-xs font-semibold text-blue-800 mb-1"   ,}, "③ 역량 확보 계획에 방법·시기·측정기준이 모두 있는가?"      )
+                    , React.createElement('p', { className: "text-xs text-gray-500" ,}, "통과 못 하면 → "    , React.createElement('span', { className: "text-pink-600 font-semibold" ,}, "Q3-1(역량별 확보 계획)"  ), "로 돌아가서 세 가지를 채우세요"    )
+                    , answers.q1_3_1 && React.createElement('p', { className: "text-xs text-gray-600 mt-1 bg-gray-50 rounded p-1 italic"      ,}, "\"", answers.q1_3_1.substring(0, 60), answers.q1_3_1.length > 60 ? '...' : '', "\" — Q3-1"  )
+                  )
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
-              <p className="text-sm text-blue-800">
-                💾 <strong>워드에서 편집 가능:</strong> 다운로드한 .doc 파일을 Microsoft Word에서 열어 자유롭게 편집하고 서식을 적용할 수 있습니다.
-              </p>
-            </div>
+                  , React.createElement('div', { className: "bg-white rounded p-3 border border-blue-100"    ,}
+                    , React.createElement('p', { className: "text-xs font-semibold text-blue-800 mb-1"   ,}, "④ 마지막 문장이 \"열심히 하겠습니다\"가 아닌 역량+성장+기여의 인과 결론인가?"        )
+                    , React.createElement('p', { className: "text-xs text-gray-500" ,}, "통과 못 하면 → "    , React.createElement('span', { className: "text-pink-600 font-semibold" ,}, "3라운드 연결Q4" ), "를 다시 보거나, Q4-2(조직 기여+회사 방향)를 활용하세요"      )
+                    , answers.connect_q4 && React.createElement('p', { className: "text-xs text-gray-600 mt-1 bg-pink-50 rounded p-1 italic"      ,}, "\"", answers.connect_q4.substring(0, 60), answers.connect_q4.length > 60 ? '...' : '', "\" — 3라운드 연결Q4"   )
+                  )
 
-            <div className="flex gap-4 mt-4">
-              <button
-                onClick={goToPrevStep}
-                className="flex items-center gap-2 px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 font-medium"
-              >
-                <ChevronLeft className="w-5 h-5" />
-                이전으로
-              </button>
-            </div>
-          </div>
+                )
+              )
 
-          <div className="bg-white rounded-lg shadow-lg p-6 mt-6">
-            <div className="mt-4 pt-4 border-t border-gray-200">
-              <p className="text-xs text-gray-800 text-center">
-                © 2026 CareerEngineer All Rights Reserved.
-              </p>
-              <p className="text-xs text-red-800 text-center mt-1 font-semibold">
-                이 워크북은 저작권법에 의해 보호받는 저작물입니다. 워크북의 전체 또는 일부를 저작권자의 사전 서면 동의 없이 무단으로 복제, 배포, 전송, 전시, 방송하거나 수정 및 편집하는 행위는 금지되어 있으며, 위반 시 관련 법령에 따라 법적인 책임을 질 수 있습니다. 오직 개인적인 용도로만 사용해야 하며, 상업적 목적의 사용 및 무단 배포를 엄격히 금지합니다.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+              , React.createElement('textarea', {
+                value: finalText,
+                onChange: (e) => setFinalText(e.target.value),
+                rows: 20,
+                className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 resize-none font-serif leading-relaxed"          ,}
+              )
+            )
+
+            , showRawAnswers && (
+              React.createElement('div', { className: "bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6"     ,}
+                , React.createElement('h4', { className: "font-semibold text-gray-800 mb-3"  ,}, "📋 원본 답변 참고"   )
+                , React.createElement('pre', { className: "text-sm text-gray-700 whitespace-pre-wrap font-sans"   ,}
+                  , getRawAnswersText()
+                )
+              )
+            )
+
+            , React.createElement('button', {
+              onClick: downloadFinalText,
+              className: "w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 font-semibold text-lg shadow-lg mb-4"                 ,}
+
+              , React.createElement(Download, { className: "w-6 h-6" ,} ), "워드 파일로 다운로드 (.doc)"
+
+            )
+
+            , downloadSuccess && (
+              React.createElement('div', { className: "bg-green-100 border-2 border-green-500 rounded-lg p-4 text-center mb-4"      ,}
+                , React.createElement('p', { className: "text-green-800 font-semibold" ,}, "✅ 다운로드 완료!"
+
+                )
+                , React.createElement('p', { className: "text-sm text-green-700 mt-1"  ,}, "다운로드 폴더에서 \""
+                    , basicInfo.company || '회사', "_입사후포부.doc\" 파일을 Microsoft Word로 열어주세요."
+                )
+              )
+            )
+
+            , React.createElement('div', { className: "bg-blue-50 border border-blue-200 rounded-lg p-4 text-center"     ,}
+              , React.createElement('p', { className: "text-sm text-blue-800" ,}, "💾 "
+                 , React.createElement('strong', null, "워드에서 편집 가능:"  ), " 다운로드한 .doc 파일을 Microsoft Word에서 열어 자유롭게 편집하고 서식을 적용할 수 있습니다."
+              )
+            )
+
+            , React.createElement('div', { className: "flex gap-4 mt-4"  ,}
+              , React.createElement('button', {
+                onClick: goToPrevStep,
+                className: "flex items-center gap-2 px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 font-medium"         ,}
+
+                , React.createElement(ChevronLeft, { className: "w-5 h-5" ,} ), "이전으로"
+
+              )
+            )
+          )
+
+          , React.createElement('div', { className: "bg-white rounded-lg shadow-lg p-6 mt-6"    ,}
+            , React.createElement('div', { className: "mt-4 pt-4 border-t border-gray-200"   ,}
+              , React.createElement('p', { className: "text-xs text-gray-800 text-center"  ,}, "© 2026 CareerEngineer All Rights Reserved."
+
+              )
+              , React.createElement('p', { className: "text-xs text-red-800 text-center mt-1 font-semibold"    ,}, "이 워크북은 저작권법에 의해 보호받는 저작물입니다. 워크북의 전체 또는 일부를 저작권자의 사전 서면 동의 없이 무단으로 복제, 배포, 전송, 전시, 방송하거나 수정 및 편집하는 행위는 금지되어 있으며, 위반 시 관련 법령에 따라 법적인 책임을 질 수 있습니다. 오직 개인적인 용도로만 사용해야 하며, 상업적 목적의 사용 및 무단 배포를 엄격히 금지합니다."
+
+              )
+            )
+          )
+        )
+      )
     );
   }
 
@@ -1089,206 +1090,206 @@ ${finalText.split('\n\n').map(para => `<p>${para.replace(/\n/g, '<br>')}</p>`).j
       };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">
-            CareerEngineer 입사후포부 작성 워크북
-          </h1>
-          <p className="text-gray-600">
-            직무 핵심 이해 → 역량 진단 → 확보 계획+범위 확장 → 다음 단계+큰 그림
-          </p>
+    React.createElement('div', { className: "min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4"    ,}
+      , React.createElement('div', { className: "max-w-4xl mx-auto" ,}
+        , React.createElement('div', { className: "bg-white rounded-lg shadow-lg p-6 mb-6"    ,}
+          , React.createElement('h1', { className: "text-3xl font-bold text-gray-800 mb-2"   ,}, "CareerEngineer 입사후포부 작성 워크북"
 
-          <div className="mt-4">
-            <div className="flex justify-between text-sm text-gray-600 mb-2">
-              <span>
-                {currentPhase === 'round1' ? '1라운드' : currentPhase === 'round2' ? '2라운드' : '3라운드'} - {currentStepData.title}
-              </span>
-              <span>전체 진행률: {Math.round(progress)}%</span>
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-3">
-              <div
-                className="bg-gradient-to-r from-blue-500 to-indigo-600 h-3 rounded-full transition-all duration-500"
-                style={{ width: progress + '%' }}
-              />
-            </div>
-          </div>
-        </div>
+          )
+          , React.createElement('p', { className: "text-gray-600",}, "직무 핵심 이해 → 역량 진단 → 확보 계획+범위 확장 → 다음 단계+큰 그림"
 
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">
-            {currentStepData.title}
-          </h2>
-          {currentStepData.subtitle && (
-            <p className="text-gray-600 mb-6">{currentStepData.subtitle}</p>
-          )}
+          )
 
-          {currentStep === 0 && currentPhase === 'round1' ? (
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  지원하고자 하는 산업
-                </label>
-                <input
-                  type="text"
-                  value={basicInfo.industry}
-                  onChange={(e) => handleBasicInfoChange('industry', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                  placeholder="예: IT, 금융, 제조, 유통 등"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  지원하고자 하는 직무
-                </label>
-                <input
-                  type="text"
-                  value={basicInfo.job}
-                  onChange={(e) => handleBasicInfoChange('job', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                  placeholder="예: 생산기술, 공정개발, 품질관리, 데이터 분석 등"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  지원하고자 하는 회사명
-                </label>
-                <input
-                  type="text"
-                  value={basicInfo.company}
-                  onChange={(e) => handleBasicInfoChange('company', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                  placeholder="예: 삼성전자, LG화학, 현대자동차 등"
-                />
-              </div>
-            </div>
+          , React.createElement('div', { className: "mt-4",}
+            , React.createElement('div', { className: "flex justify-between text-sm text-gray-600 mb-2"    ,}
+              , React.createElement('span', null
+                , currentPhase === 'round1' ? '1라운드' : currentPhase === 'round2' ? '2라운드' : '3라운드', " - "  , currentStepData.title
+              )
+              , React.createElement('span', null, "전체 진행률: "  , Math.round(progress), "%")
+            )
+            , React.createElement('div', { className: "w-full bg-gray-200 rounded-full h-3"   ,}
+              , React.createElement('div', {
+                className: "bg-gradient-to-r from-blue-500 to-indigo-600 h-3 rounded-full transition-all duration-500"      ,
+                style: { width: progress + '%' },}
+              )
+            )
+          )
+        )
+
+        , React.createElement('div', { className: "bg-white rounded-lg shadow-lg p-8"   ,}
+          , React.createElement('h2', { className: "text-2xl font-bold text-gray-800 mb-2"   ,}
+            , currentStepData.title
+          )
+          , currentStepData.subtitle && (
+            React.createElement('p', { className: "text-gray-600 mb-6" ,}, currentStepData.subtitle)
+          )
+
+          , currentStep === 0 && currentPhase === 'round1' ? (
+            React.createElement('div', { className: "space-y-4",}
+              , React.createElement('div', null
+                , React.createElement('label', { className: "block text-sm font-semibold text-gray-700 mb-2"    ,}, "지원하고자 하는 산업"
+
+                )
+                , React.createElement('input', {
+                  type: "text",
+                  value: basicInfo.industry,
+                  onChange: (e) => handleBasicInfoChange('industry', e.target.value),
+                  className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"       ,
+                  placeholder: "예: IT, 금융, 제조, 유통 등"     ,}
+                )
+              )
+              , React.createElement('div', null
+                , React.createElement('label', { className: "block text-sm font-semibold text-gray-700 mb-2"    ,}, "지원하고자 하는 직무"
+
+                )
+                , React.createElement('input', {
+                  type: "text",
+                  value: basicInfo.position,
+                  onChange: (e) => handleBasicInfoChange('position', e.target.value),
+                  className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"       ,
+                  placeholder: "예: 생산기술, 공정개발, 품질관리, 데이터 분석 등"      ,}
+                )
+              )
+              , React.createElement('div', null
+                , React.createElement('label', { className: "block text-sm font-semibold text-gray-700 mb-2"    ,}, "지원하고자 하는 회사명"
+
+                )
+                , React.createElement('input', {
+                  type: "text",
+                  value: basicInfo.company,
+                  onChange: (e) => handleBasicInfoChange('company', e.target.value),
+                  className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"       ,
+                  placeholder: "예: 삼성전자, LG화학, 현대자동차 등"    ,}
+                )
+              )
+            )
           ) : (
-            <div className="space-y-6">
-              {currentStepData.questions.map((q) => (
-                <div key={q.id} className="mb-6 border-b border-gray-200 pb-6 last:border-b-0">
-                  <div className="flex items-start justify-between mb-2">
-                    <label className="text-lg font-semibold text-gray-800">
-                      {q.label}
-                    </label>
-                    {q.guide && (
-                      <button
-                        onClick={() => toggleGuide(q.id)}
-                        className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-800"
-                      >
-                        <HelpCircle className="w-4 h-4" />
-                        {showGuide[q.id] ? '가이드 숨기기' : '가이드 보기'}
-                      </button>
-                    )}
-                  </div>
+            React.createElement('div', { className: "space-y-6",}
+              , currentStepData.questions.map((q) => (
+                React.createElement('div', { key: q.id, className: "mb-6 border-b border-gray-200 pb-6 last:border-b-0"    ,}
+                  , React.createElement('div', { className: "flex items-start justify-between mb-2"   ,}
+                    , React.createElement('label', { className: "text-lg font-semibold text-gray-800"  ,}
+                      , q.label
+                    )
+                    , q.guide && (
+                      React.createElement('button', {
+                        onClick: () => toggleGuide(q.id),
+                        className: "flex items-center gap-1 text-sm text-blue-600 hover:text-blue-800"     ,}
 
-                  {q.hint && (
-                    <p className="text-sm text-gray-600 mb-2">💡 {q.hint}</p>
-                  )}
+                        , React.createElement(HelpCircle, { className: "w-4 h-4" ,} )
+                        , showGuide[q.id] ? '가이드 숨기기' : '가이드 보기'
+                      )
+                    )
+                  )
 
-                  {q.referenceQuestions && (
-                    <div className={`border-l-4 p-4 mb-4 rounded-r-lg ${currentPhase === 'round3' ? 'bg-purple-50 border-purple-400' : 'bg-indigo-50 border-indigo-400'}`}>
-                      <p className={`text-sm font-semibold mb-1 ${currentPhase === 'round3' ? 'text-purple-900' : 'text-indigo-900'}`}>
-                        {currentPhase === 'round3' ? '📚 아래 답변들을 읽고, 하나의 흐름으로 연결해서 위 질문에 답하세요' : '📚 참고: 이전 답변'}
-                      </p>
-                      {currentPhase === 'round3' && (
-                        <p className="text-xs text-purple-700 mb-3">모든 내용을 다 쓸 필요는 없습니다. 각 답변에서 가장 핵심적인 부분을 골라 자연스럽게 연결하세요.</p>
-                      )}
-                      <div className="space-y-3">
-                        {q.referenceQuestions.map((refId) => {
+                  , q.hint && (
+                    React.createElement('p', { className: "text-sm text-gray-600 mb-2"  ,}, "💡 " , q.hint)
+                  )
+
+                  , q.referenceQuestions && (
+                    React.createElement('div', { className: `border-l-4 p-4 mb-4 rounded-r-lg ${currentPhase === 'round3' ? 'bg-purple-50 border-purple-400' : 'bg-indigo-50 border-indigo-400'}`,}
+                      , React.createElement('p', { className: `text-sm font-semibold mb-1 ${currentPhase === 'round3' ? 'text-purple-900' : 'text-indigo-900'}`,}
+                        , currentPhase === 'round3' ? '📚 아래 답변들을 읽고, 하나의 흐름으로 연결해서 위 질문에 답하세요' : '📚 참고: 이전 답변'
+                      )
+                      , currentPhase === 'round3' && (
+                        React.createElement('p', { className: "text-xs text-purple-700 mb-3"  ,}, "모든 내용을 다 쓸 필요는 없습니다. 각 답변에서 가장 핵심적인 부분을 골라 자연스럽게 연결하세요."             )
+                      )
+                      , React.createElement('div', { className: "space-y-3",}
+                        , q.referenceQuestions.map((refId) => {
                           const allQuestions = round1Steps.flatMap(s => s.questions || []);
-                          const refQuestion = allQuestions.find(q => q?.id === refId);
+                          const refQuestion = allQuestions.find(q => _optionalChain([q, 'optionalAccess', _6 => _6.id]) === refId);
                           if (!refQuestion || !answers[refId]) return null;
                           const charLimit = currentPhase === 'round3' ? 300 : 150;
                           return (
-                            <div key={refId} className={`rounded text-sm p-3 ${currentPhase === 'round3' ? 'bg-white border border-purple-100' : 'bg-white'}`}>
-                              <p className={`font-semibold mb-1 text-xs ${currentPhase === 'round3' ? 'text-purple-700' : 'text-gray-700'}`}>
-                                {refQuestion.label}
-                              </p>
-                              <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
-                                {answers[refId]?.substring(0, charLimit)}{answers[refId]?.length > charLimit ? '...' : ''}
-                              </p>
-                            </div>
+                            React.createElement('div', { key: refId, className: `rounded text-sm p-3 ${currentPhase === 'round3' ? 'bg-white border border-purple-100' : 'bg-white'}`,}
+                              , React.createElement('p', { className: `font-semibold mb-1 text-xs ${currentPhase === 'round3' ? 'text-purple-700' : 'text-gray-700'}`,}
+                                , refQuestion.label
+                              )
+                              , React.createElement('p', { className: "text-gray-700 leading-relaxed whitespace-pre-wrap"  ,}
+                                , _optionalChain([answers, 'access', _7 => _7[refId], 'optionalAccess', _8 => _8.substring, 'call', _9 => _9(0, charLimit)]), _optionalChain([answers, 'access', _10 => _10[refId], 'optionalAccess', _11 => _11.length]) > charLimit ? '...' : ''
+                              )
+                            )
                           );
-                        })}
-                      </div>
-                    </div>
-                  )}
+                        })
+                      )
+                    )
+                  )
 
-                  {q.guide && showGuide[q.id] && (
-                    <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-3 space-y-3">
-                      <div>
-                        <p className="text-sm font-semibold text-blue-900 mb-1">📝 {q.guide.description}</p>
-                      </div>
+                  , q.guide && showGuide[q.id] && (
+                    React.createElement('div', { className: "bg-blue-50 border-l-4 border-blue-400 p-4 mb-3 space-y-3"     ,}
+                      , React.createElement('div', null
+                        , React.createElement('p', { className: "text-sm font-semibold text-blue-900 mb-1"   ,}, "📝 " , q.guide.description)
+                      )
 
-                      <div>
-                        <p className="text-sm font-semibold text-blue-900 mb-1">🎯 {q.guide.diagnosis}</p>
-                      </div>
+                      , React.createElement('div', null
+                        , React.createElement('p', { className: "text-sm font-semibold text-blue-900 mb-1"   ,}, "🎯 " , q.guide.diagnosis)
+                      )
 
-                      {q.guide.helpQuestions && (
-                        <div>
-                          <p className="text-sm font-semibold text-blue-900 mb-1">❓ 구체화 도움 질문:</p>
-                          <ul className="text-sm text-blue-800 space-y-1 ml-4">
-                            {q.guide.helpQuestions.map((hq, i) => (
-                              <li key={i}>• {hq}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
+                      , q.guide.helpQuestions && (
+                        React.createElement('div', null
+                          , React.createElement('p', { className: "text-sm font-semibold text-blue-900 mb-1"   ,}, "❓ 구체화 도움 질문:"   )
+                          , React.createElement('ul', { className: "text-sm text-blue-800 space-y-1 ml-4"   ,}
+                            , q.guide.helpQuestions.map((hq, i) => (
+                              React.createElement('li', { key: i,}, "• " , hq)
+                            ))
+                          )
+                        )
+                      )
 
-                      {q.guide.ifDifficult && (
-                        <div>
-                          <p className="text-sm font-semibold text-blue-900 mb-1">💭 답변하기 어렵다면:</p>
-                          <p className="text-sm text-blue-800">{q.guide.ifDifficult}</p>
-                        </div>
-                      )}
+                      , q.guide.ifDifficult && (
+                        React.createElement('div', null
+                          , React.createElement('p', { className: "text-sm font-semibold text-blue-900 mb-1"   ,}, "💭 답변하기 어렵다면:"  )
+                          , React.createElement('p', { className: "text-sm text-blue-800" ,}, q.guide.ifDifficult)
+                        )
+                      )
 
-                      {q.guide.ifStillDifficult && (
-                        <div>
-                          <p className="text-sm font-semibold text-blue-900 mb-1">💡 구체화 도움 질문으로도 어렵다면:</p>
-                          <p className="text-sm text-blue-800">{q.guide.ifStillDifficult}</p>
-                        </div>
-                      )}
-                    </div>
-                  )}
+                      , q.guide.ifStillDifficult && (
+                        React.createElement('div', null
+                          , React.createElement('p', { className: "text-sm font-semibold text-blue-900 mb-1"   ,}, "💡 구체화 도움 질문으로도 어렵다면:"    )
+                          , React.createElement('p', { className: "text-sm text-blue-800" ,}, q.guide.ifStillDifficult)
+                        )
+                      )
+                    )
+                  )
 
-                  <textarea
-                    value={answers[q.id] || ''}
-                    onChange={(e) => handleAnswerChange(q.id, e.target.value)}
-                    rows={q.rows || 3}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 resize-none"
-                    placeholder={q.placeholder}
-                  />
-                </div>
-              ))}
-            </div>
-          )}
+                  , React.createElement('textarea', {
+                    value: answers[q.id] || '',
+                    onChange: (e) => handleAnswerChange(q.id, e.target.value),
+                    rows: q.rows || 3,
+                    className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 resize-none"        ,
+                    placeholder: q.placeholder,}
+                  )
+                )
+              ))
+            )
+          )
 
-          <div className="flex gap-4 mt-8">
-            <button
-              onClick={goToPrevStep}
-              className="flex items-center gap-2 px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 font-medium"
-            >
-              <ChevronLeft className="w-5 h-5" />
-              이전
-            </button>
-            <button
-              onClick={goToNextStep}
-              disabled={!canGoNext()}
-              className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
-            >
-              다음
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
+          , React.createElement('div', { className: "flex gap-4 mt-8"  ,}
+            , React.createElement('button', {
+              onClick: goToPrevStep,
+              className: "flex items-center gap-2 px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 font-medium"         ,}
 
-        <div className="text-center mt-6">
-          <p className="text-xs text-gray-500">
-            © 2026 CareerEngineer All Rights Reserved.
-          </p>
-        </div>
-      </div>
-    </div>
+              , React.createElement(ChevronLeft, { className: "w-5 h-5" ,} ), "이전"
+
+            )
+            , React.createElement('button', {
+              onClick: goToNextStep,
+              disabled: !canGoNext(),
+              className: "flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed font-semibold"             ,}
+, "다음"
+
+              , React.createElement(ChevronRight, { className: "w-5 h-5" ,} )
+            )
+          )
+        )
+
+        , React.createElement('div', { className: "text-center mt-6" ,}
+          , React.createElement('p', { className: "text-xs text-gray-500" ,}, "© 2026 CareerEngineer All Rights Reserved."
+
+          )
+        )
+      )
+    )
   );
 };
 
