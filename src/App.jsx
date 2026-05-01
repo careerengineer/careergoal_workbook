@@ -29,8 +29,7 @@ const RADIUS = { sm: 6, base: 10, md: 14, lg: 20, pill: 999 };
 // ════════════════════════════════════════════════════════════════
 //  CareerEngineer 워크북 라이브러리 (URL은 나중에 일괄 적용)
 // ════════════════════════════════════════════════════════════════
-const WORKBOOK_LINKS = {
-  roadmap:            { label: 'STEP 0 · 취업준비 진단', url: 'https://www.latpeed.com/products/nDbq9' },
+const WORKBOOK_LINKS = { career_roadmap: { label: 'STEP 0 · 취업준비 진단', url: 'https://www.latpeed.com/products/nDbq9' },
   job_analysis:       { label: 'STEP 1 · 채용공고 및 직무 분석', url: 'https://www.latpeed.com/products/-3Wgm' },
   experience:         { label: 'STEP 2 · 경험 정리', url: 'https://www.latpeed.com/products/wDSaj' },
   motivation:         { label: 'STEP 4 · 지원동기 작성', url: 'https://www.latpeed.com/products/dfdMW' },
@@ -795,7 +794,7 @@ const CareerAspirationWorkbook = () => {
     
     // 7단계 구조 - 자소서 5대 항목만 하위 항목 펼침, 나머지는 단일 링크
     const stepGroups = [
-      { step: '0', label: '취업준비 진단', key: 'roadmap' },
+      { step: '0', label: '취업준비 진단', key: 'career_roadmap' },
       { step: '1', label: '채용공고 및 직무 분석', key: 'job_analysis' },
       { step: '2', label: '경험 정리', key: 'experience' },
       { step: '3', inline: true, label: '', items: [
@@ -1218,7 +1217,7 @@ const CareerAspirationWorkbook = () => {
                       <h3 style={{ fontSize: FONT.size.md, fontWeight: FONT.weight.bold, color: COLORS.accent, margin: 0, marginBottom: 4 }}>{step.title}</h3>
                       <p style={{ fontSize: FONT.size.sm, color: COLORS.sub, margin: 0, marginBottom: SPACING.sm }}>{step.subtitle}</p>
                       <div style={{ background: COLORS.bgAlt, borderRadius: RADIUS.sm, padding: SPACING.sm, fontSize: FONT.size.sm, color: COLORS.accent, lineHeight: FONT.lineHeight.base }}>
-                        <strong>내 답변:</strong> {(step.questions && step.questions[0] && answers[step.questions[0].id]?.substring(0, 100)) || '(답변 없음)'}
+                        <strong>내 답변:</strong> {step.questions && step.questions[0] && answers[step.questions[0].id]?.substring(0, 100) || '(답변 없음)'}
                         {step.questions && step.questions[0] && answers[step.questions[0].id]?.length > 100 && '...'}
                       </div>
                     </div>
